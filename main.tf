@@ -15,6 +15,6 @@ provider "azurerm" {
   tenant_id       = var.tenant_id
 }
 resource "azurerm_resource_group" "RG" {
-  name     = "myrg"
-  location = "West Europe"
+  name = "local.resource_group_name"
+  location = "local.location"
 }
