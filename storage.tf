@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "Storage" {
-  name                     = "stactst98"
+  name                     = cd Cloud-Infra
   resource_group_name      = "myrg"
   location                 = "West Europe"
   account_tier             = "Standard"
@@ -9,7 +9,7 @@ resource "azurerm_storage_account" "Storage" {
 
 resource "azurerm_storage_container" "Container" {
   name                  = "containertst98"
-  storage_account_id    = "enter your subscription id"
+  storage_account_name    = "Cloud-Infra"
   container_access_type = "container"
   depends_on = [ azurerm_storage_account.Storage ]
 }
