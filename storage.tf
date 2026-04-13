@@ -1,0 +1,24 @@
+resource "azurerm_storage_account" "Storage" {
+  name                     = "stst98"
+  resource_group_name      = "myrg"
+  location                 = "West Europe"
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  depends_on = [ azurerm_resource_group.RG ]
+}
+
+resource "azurerm_storage_container" "Container" {
+  name                  = "containertst98"
+  storage_account_name    = "stst98"
+  container_access_type = "container"
+  depends_on = [ azurerm_storage_account.Storage ]
+}
+
+resource "azurerm_storage_blob" "Blob" {
+  name                   = "new98"
+  storage_account_name   = "stactst98"
+  storage_container_name = "containertst98"
+  type                   = "Block"
+  source                 = "main.tf"
+  depends_on = [ azurerm_storage_container.Container ]
+}
