@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "Storage" {
-  name                     = "teststrg98"
+  name                     = "teststrg9898"
   resource_group_name      = "myrg"
   location                 = "West Europe"
   account_tier             = "Standard"
@@ -9,14 +9,14 @@ resource "azurerm_storage_account" "Storage" {
 
 resource "azurerm_storage_container" "Container" {
   name                  = "containertst98"
-  storage_account_id    = "teststrg98"
+  storage_account_name =  "teststrg9898"
   container_access_type = "private"
   depends_on = [ azurerm_storage_account.Storage ]
 }
 
 resource "azurerm_storage_blob" "Blob" {
   name                   = "new98"
-  storage_account_name   = "teststrg98"
+  storage_account_name   = "teststrg9898"
   storage_container_name = "containertst98"
   type                   = "Block"
   source                 = "main.tf"
