@@ -9,14 +9,14 @@ resource "azurerm_storage_account" "Storage" {
 
 resource "azurerm_storage_container" "Container" {
   name                  = "containertst98"
-  storage_account_name    = "stst98"
+  storage_account_id    = "stst98"
   container_access_type = "container"
   depends_on = [ azurerm_storage_account.Storage ]
 }
 
 resource "azurerm_storage_blob" "Blob" {
   name                   = "new98"
-  storage_account_name   = "stactst98"
+  storage_account_name   = "stst98"
   storage_container_name = "containertst98"
   type                   = "Block"
   source                 = "main.tf"
