@@ -18,3 +18,16 @@ subnets = [
   }
 ]
 }
+
+resource "azurerm_network_interface" "nic" {
+  name = "nic1"
+  location = local.location
+  resource_group_name = local.resource_group_name
+
+  ip_configuration {
+    name                          = "internal1"
+    subnet_id                     = azurerm_subnet.subnetA.id
+    private_ip_address_allocation = "Dynamic"
+  }
+  depends_on = [ azurerm_subnet.subnetA ]
+}
