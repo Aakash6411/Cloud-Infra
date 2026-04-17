@@ -14,7 +14,8 @@ provider "azurerm" {
   client_secret   = var.client_secret
   tenant_id       = var.tenant_id
 }
+
 resource "azurerm_resource_group" "RG" {
-  name = "local.resource_group_name"
-  location = "local.location"
+  name = local.resource_group_name
+  location = local.location
 }

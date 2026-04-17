@@ -1,7 +1,7 @@
 resource "azurerm_virtual_network" "vnet1" {
   name                = "vnetst1"
-  location            = "West Europe"
-  resource_group_name = "myrg"
+  location            = local.location
+  resource_group_name = local.resource_group_name
   address_space       = ["10.0.0.0/16"]
 
   subnet {
