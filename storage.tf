@@ -1,7 +1,7 @@
 resource "azurerm_storage_account" "Storage" {
   name                     = "teststrg9898"
-  resource_group_name      = "myrg"
-  location                 = "West Europe"
+  resource_group_name      = local.resource_group_name
+  location                 = local.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
   depends_on = [ azurerm_resource_group.RG ]
