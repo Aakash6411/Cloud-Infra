@@ -5,13 +5,13 @@ resource "azurerm_virtual_network" "vnet1" {
   address_space       = [local.virtual_network.address_space]
 
   subnet {
-    name             = "subnet1"
-    address_prefixes = ["10.0.1.0/24"]
+    name             = local.subnets[0].name
+    address_prefixes = local.subnets[0].address_prefixes
   }
 
   subnet {
-    name             = "subnet2"
-    address_prefixes = ["10.0.2.0/24"]
+    name             = local.subnets[1].name
+    address_prefixes = local.subnets[1].address_prefixes
   }
   depends_on = [ azurerm_resource_group.RG ]
 
