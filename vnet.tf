@@ -35,7 +35,7 @@ resource "azurerm_virtual_network" "vnet1" {
     name                          = "internal1"
     subnet_id                     = azurerm_subnet.subnetA.id
     private_ip_address_allocation = "Dynamic"
-    public_ip_address_id = azurerm_public_ip.publicip1.id
+    public_ip_address_id = azurerm_public_ip.publicip1.id #For association of publicip with nic
   }
   depends_on = [ azurerm_subnet.subnetA ]
 }
@@ -50,4 +50,31 @@ resource "azurerm_public_ip" "publicip1" {
     environment = "Production"
   }
   depends_on = [ azurerm_resource_group.RG ]
+}
+
+resource "azurerm_network_security_group" "NSG1" {
+  name                = "rdp_rule"
+  location            = local.location
+  resource_group_name = local.resource_group_name
+
+  security_rule {
+    name                       = "test123"
+    priority                   = 100
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "3389"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+    tags = {
+    Creator = "CloudBaba"
+    }
+}
+
+resource "azurerm_subnet_network_security_group_association" "nsgassociation" {
+  subnet_id                 = azurerm_subnet.subnetA.id
+  network_security_group_id = azurerm_network_security_group.NSG1.id
 }
