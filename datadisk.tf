@@ -10,6 +10,6 @@ resource "azurerm_managed_disk" "datadisk1" {
 resource "azurerm_virtual_machine_data_disk_attachment" "attachment1" {
   managed_disk_id    = azurerm_managed_disk.datadisk1.id
   virtual_machine_id = azurerm_windows_virtual_machine.tstvm.id
-  lun                = "10"
+  lun                = "1"
   caching            = "ReadWrite"
 }
