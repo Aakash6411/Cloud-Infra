@@ -58,7 +58,7 @@ resource "azurerm_network_security_group" "NSG1" {
   resource_group_name = local.resource_group_name
 
   security_rule {
-    name                       = "test123"
+    name                       = "RDPRule"
     priority                   = 100
     direction                  = "Inbound"
     access                     = "Allow"
