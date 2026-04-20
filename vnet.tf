@@ -72,6 +72,7 @@ resource "azurerm_network_security_group" "NSG1" {
     tags = {
     Creator = "CloudBaba"
     }
+    depends_on = [ azurerm_resource_group.RG ]
 }
 
 resource "azurerm_subnet_network_security_group_association" "nsgassociation" {
